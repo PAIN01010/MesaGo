@@ -43,7 +43,6 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -60,6 +59,7 @@ import com.example.mesago.ui.theme.MesaGoBlack
 import com.example.mesago.ui.theme.MesaGoGray
 import com.example.mesago.ui.theme.MesaGoRed
 import com.example.mesago.ui.theme.MesaGoWhite
+import androidx.compose.runtime.saveable.rememberSaveable
 
 private val VerdeAbierto = Color(0xFF2E7D32)
 private val FondoVerde = Color(0xFFE6F4EA)
@@ -72,7 +72,7 @@ fun HomeScreen(
     onProfileClick: () -> Unit = {},
     onSettingsClick: () -> Unit = {}
 ) {
-    var busqueda by remember { mutableStateOf("") }
+    var busqueda by rememberSaveable { mutableStateOf("") }
     val visibles = tastysDemo.withIndex().filter {
         it.value.nombre.contains(busqueda, ignoreCase = true) ||
                 it.value.ubicacion.contains(busqueda, ignoreCase = true)

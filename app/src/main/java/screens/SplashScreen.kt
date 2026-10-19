@@ -46,12 +46,16 @@ fun SplashScreen(
     ) {
 
         Image(
-            painter = painterResource(id = R.drawable.mesago_logo),
+            painter = painterResource(
+                id = R.drawable.mesago_logo
+            ),
             contentDescription = "Logo MesaGo",
             modifier = Modifier.size(220.dp)
         )
 
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(
+            modifier = Modifier.height(20.dp)
+        )
 
         LinearProgressIndicator(
             modifier = Modifier.size(
@@ -62,7 +66,9 @@ fun SplashScreen(
             trackColor = MesaGoLightGray
         )
 
-        Spacer(modifier = Modifier.height(14.dp))
+        Spacer(
+            modifier = Modifier.height(14.dp)
+        )
 
         Text(
             text = "Cargando...",
@@ -70,7 +76,9 @@ fun SplashScreen(
             color = MesaGoGray
         )
 
-        Spacer(modifier = Modifier.height(28.dp))
+        Spacer(
+            modifier = Modifier.height(28.dp)
+        )
 
         Text(
             text = "“Descubre los sabores de la ULEAM”",
@@ -80,7 +88,9 @@ fun SplashScreen(
             color = MesaGoBlack
         )
 
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(
+            modifier = Modifier.height(8.dp)
+        )
 
         Text(
             text = "Universidad Laica Eloy Alfaro de Manabí",

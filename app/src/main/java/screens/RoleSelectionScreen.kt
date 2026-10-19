@@ -4,7 +4,6 @@ package com.example.mesago.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -50,33 +49,46 @@ import com.example.mesago.ui.theme.MesaGoGray
 import com.example.mesago.ui.theme.MesaGoRed
 import com.example.mesago.ui.theme.MesaGoWhite
 
-private val FondoPantalla = Color(0xFFF7F5F3)
 private val RosaSuave = Color(0xFFFCE4EC)
 
-/** Tras iniciar sesión o registrarse: el usuario elige rol estudiante o encargado. */
+/**
+ * Pantalla de selección de rol.
+ * Se utiliza después de iniciar sesión o registrarse
+ * para probar los dos flujos de MesaGo.
+ */
 @Composable
 fun RoleSelectionScreen(
     onStudentClick: () -> Unit = {},
     onManagerClick: () -> Unit = {}
 ) {
+
     Scaffold(
-        containerColor = FondoPantalla,
+        containerColor = MesaGoWhite,
+
         topBar = {
             TopAppBar(
                 title = {
                     Column {
+
                         Text(
-                            "MesaGo",
+                            text = "MesaGo",
                             fontWeight = FontWeight.Bold,
                             fontSize = 18.sp,
                             color = MesaGoRed
                         )
-                        Text("ULEAM · Selección de rol", fontSize = 12.sp, color = MesaGoGray)
+
+                        Text(
+                            text = "ULEAM · Selección de rol",
+                            fontSize = 12.sp,
+                            color = MesaGoGray
+                        )
                     }
                 },
+
                 actions = {
+
                     Text(
-                        "✔ ULEAM",
+                        text = "✔ ULEAM",
                         fontSize = 11.sp,
                         fontWeight = FontWeight.SemiBold,
                         color = MesaGoRed,
@@ -84,34 +96,53 @@ fun RoleSelectionScreen(
                             .padding(end = 16.dp)
                             .clip(RoundedCornerShape(50))
                             .background(RosaSuave)
-                            .padding(horizontal = 10.dp, vertical = 4.dp)
+                            .padding(
+                                horizontal = 10.dp,
+                                vertical = 4.dp
+                            )
                     )
                 },
-                colors = TopAppBarDefaults.topAppBarColors(containerColor = FondoPantalla)
+
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = MesaGoWhite
+                )
             )
         }
     ) { padding ->
+
         Box(
             modifier = Modifier
                 .fillMaxSize()
+                .background(MesaGoWhite)
                 .padding(padding),
+
             contentAlignment = Alignment.TopCenter
         ) {
+
             Column(
                 modifier = Modifier
                     .widthIn(max = 520.dp)
                     .fillMaxWidth()
                     .verticalScroll(rememberScrollState())
-                    .padding(horizontal = 24.dp, vertical = 16.dp),
+                    .padding(
+                        horizontal = 24.dp,
+                        vertical = 16.dp
+                    ),
+
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
+
                 Image(
-                    painter = painterResource(id = R.drawable.mesago_logo),
+                    painter = painterResource(
+                        id = R.drawable.mesago_logo
+                    ),
                     contentDescription = "Logo MesaGo",
                     modifier = Modifier.size(108.dp)
                 )
 
-                Spacer(modifier = Modifier.height(18.dp))
+                Spacer(
+                    modifier = Modifier.height(18.dp)
+                )
 
                 Text(
                     text = "¿Cómo quieres ingresar?",
@@ -121,40 +152,57 @@ fun RoleSelectionScreen(
                     textAlign = TextAlign.Center
                 )
 
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(
+                    modifier = Modifier.height(8.dp)
+                )
 
                 Text(
-                    text = "Elige tu experiencia según tu rol en el comedor universitario.",
+                    text = "Selecciona el tipo de acceso para continuar en MesaGo.",
                     fontSize = 14.sp,
                     color = MesaGoGray,
                     textAlign = TextAlign.Center,
                     lineHeight = 20.sp
                 )
 
-                Spacer(modifier = Modifier.height(20.dp))
+                Spacer(
+                    modifier = Modifier.height(20.dp)
+                )
 
                 Row(
-                    Modifier
+                    modifier = Modifier
                         .fillMaxWidth()
-                        .clip(RoundedCornerShape(12.dp))
+                        .clip(
+                            RoundedCornerShape(12.dp)
+                        )
                         .background(RosaSuave)
                         .padding(12.dp),
+
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text("ℹ️", fontSize = 14.sp)
-                    Spacer(Modifier.width(8.dp))
+
                     Text(
-                        "Puedes cambiar de rol más tarde desde Configuración.",
+                        text = "ℹ️",
+                        fontSize = 14.sp
+                    )
+
+                    Spacer(
+                        modifier = Modifier.width(8.dp)
+                    )
+
+                    Text(
+                        text = "Selecciona el rol con el que deseas explorar la aplicación.",
                         fontSize = 12.sp,
                         color = MesaGoBlack,
                         lineHeight = 16.sp
                     )
                 }
 
-                Spacer(modifier = Modifier.height(24.dp))
+                Spacer(
+                    modifier = Modifier.height(24.dp)
+                )
 
                 Text(
-                    "SELECCIONA TU ROL",
+                    text = "SELECCIONA TU ROL",
                     fontSize = 12.sp,
                     fontWeight = FontWeight.Bold,
                     color = MesaGoRed,
@@ -171,7 +219,9 @@ fun RoleSelectionScreen(
                     onClick = onStudentClick
                 )
 
-                Spacer(modifier = Modifier.height(14.dp))
+                Spacer(
+                    modifier = Modifier.height(14.dp)
+                )
 
                 RoleCard(
                     title = "Soy encargado",
@@ -181,11 +231,14 @@ fun RoleSelectionScreen(
                     onClick = onManagerClick
                 )
 
-                Spacer(modifier = Modifier.height(28.dp))
+                Spacer(
+                    modifier = Modifier.height(28.dp)
+                )
             }
         }
     }
 }
+
 
 @Composable
 private fun RoleCard(
@@ -195,53 +248,98 @@ private fun RoleCard(
     icon: ImageVector,
     onClick: () -> Unit
 ) {
+
     Card(
         onClick = onClick,
+
         modifier = Modifier.fillMaxWidth(),
+
         shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.cardColors(containerColor = MesaGoWhite),
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+
+        colors = CardDefaults.cardColors(
+            containerColor = MesaGoWhite
+        ),
+
+        elevation = CardDefaults.cardElevation(
+            defaultElevation = 2.dp
+        )
     ) {
+
         Row(
             modifier = Modifier.padding(18.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
+
             Icon(
                 imageVector = icon,
                 contentDescription = null,
                 tint = MesaGoRed,
                 modifier = Modifier.size(44.dp)
             )
-            Spacer(modifier = Modifier.width(14.dp))
-            Column(modifier = Modifier.weight(1f)) {
+
+            Spacer(
+                modifier = Modifier.width(14.dp)
+            )
+
+            Column(
+                modifier = Modifier.weight(1f)
+            ) {
+
                 Text(
                     text = title,
                     fontSize = 18.sp,
                     fontWeight = FontWeight.SemiBold,
                     color = MesaGoBlack
                 )
-                Spacer(modifier = Modifier.height(4.dp))
-                Text(text = subtitle, fontSize = 13.sp, color = MesaGoGray, lineHeight = 18.sp)
-                Spacer(modifier = Modifier.height(6.dp))
+
+                Spacer(
+                    modifier = Modifier.height(4.dp)
+                )
+
+                Text(
+                    text = subtitle,
+                    fontSize = 13.sp,
+                    color = MesaGoGray,
+                    lineHeight = 18.sp
+                )
+
+                Spacer(
+                    modifier = Modifier.height(6.dp)
+                )
+
                 Text(
                     text = detail,
                     fontSize = 11.sp,
-                    color = MesaGoRed.copy(alpha = 0.85f),
+                    color = MesaGoRed.copy(
+                        alpha = 0.85f
+                    ),
                     fontWeight = FontWeight.Medium
                 )
             }
+
             Icon(
-                imageVector = Icons.AutoMirrored.Filled.ArrowForward,
+                imageVector =
+                    Icons.AutoMirrored.Filled.ArrowForward,
+
                 contentDescription = null,
+
                 tint = MesaGoRed,
+
                 modifier = Modifier.size(22.dp)
             )
         }
     }
 }
 
-@Preview(showBackground = true, heightDp = 780)
+
+@Preview(
+    showBackground = true,
+    heightDp = 780
+)
 @Composable
 private fun PreviewRoleSelection() {
-    MaterialTheme { RoleSelectionScreen() }
+
+    MaterialTheme {
+        RoleSelectionScreen()
+    }
 }
