@@ -44,7 +44,8 @@ import com.example.mesago.ui.theme.MesaGoWhite
 
 @Composable
 fun RegisterScreen(
-    onLoginClick: () -> Unit
+    onLoginClick: () -> Unit,
+    onRegisterSuccess: () -> Unit = onLoginClick
 ) {
 
     var nombre by rememberSaveable { mutableStateOf("") }
@@ -220,7 +221,7 @@ fun RegisterScreen(
         Spacer(modifier = Modifier.height(20.dp))
 
         Button(
-            onClick = { },
+            onClick = onRegisterSuccess,
             modifier = Modifier
                 .fillMaxWidth()
                 .height(52.dp),

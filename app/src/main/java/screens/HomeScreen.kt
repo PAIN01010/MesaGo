@@ -67,7 +67,11 @@ private val FondoVerde = Color(0xFFE6F4EA)
 // Pantalla principal del estudiante (prototipo: "Tasty Food disponibles").
 // onTasty recibe la posición del Tasty en la lista (luego será el id de Room).
 @Composable
-fun HomeScreen(onTasty: (Int) -> Unit = {}) {
+fun HomeScreen(
+    onTasty: (Int) -> Unit = {},
+    onProfileClick: () -> Unit = {},
+    onSettingsClick: () -> Unit = {}
+) {
     var busqueda by remember { mutableStateOf("") }
     val visibles = tastysDemo.withIndex().filter {
         it.value.nombre.contains(busqueda, ignoreCase = true) ||
@@ -80,8 +84,8 @@ fun HomeScreen(onTasty: (Int) -> Unit = {}) {
         topBar = {
             TopAppBar(
                 navigationIcon = {
-                    IconButton(onClick = { }) {
-                        Icon(Icons.Default.Menu, contentDescription = "Menú", tint = MesaGoBlack)
+                    IconButton(onClick = onSettingsClick) {
+                        Icon(Icons.Default.Menu, contentDescription = "Configuración", tint = MesaGoBlack)
                     }
                 },
                 title = {
@@ -94,15 +98,19 @@ fun HomeScreen(onTasty: (Int) -> Unit = {}) {
                     IconButton(onClick = { }) {
                         Icon(Icons.Default.Notifications, contentDescription = "Notificaciones", tint = MesaGoBlack)
                     }
-                    Box(
-                        Modifier
-                            .padding(end = 12.dp)
-                            .size(36.dp)
-                            .clip(CircleShape)
-                            .background(MesaGoRed.copy(alpha = 0.12f)),
-                        contentAlignment = Alignment.Center
+                    IconButton(
+                        onClick = onProfileClick,
+                        modifier = Modifier.padding(end = 4.dp)
                     ) {
-                        Icon(Icons.Default.Person, contentDescription = "Perfil", tint = MesaGoRed)
+                        Box(
+                            Modifier
+                                .size(36.dp)
+                                .clip(CircleShape)
+                                .background(MesaGoRed.copy(alpha = 0.12f)),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Icon(Icons.Default.Person, contentDescription = "Perfil", tint = MesaGoRed)
+                        }
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = MesaGoWhite)

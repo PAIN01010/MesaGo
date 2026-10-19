@@ -188,7 +188,7 @@ fun LoginScreen(
         Spacer(modifier = Modifier.height(12.dp))
 
         TextButton(
-            onClick = { }
+            onClick = onLoginClick
         ) {
             Text(
                 text = "Continuar con Google (ULEAM)",
