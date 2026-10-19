@@ -45,7 +45,8 @@ import com.example.mesago.ui.theme.MesaGoWhite
 
 @Composable
 fun LoginScreen(
-    onRegisterClick: () -> Unit
+    onRegisterClick: () -> Unit,
+    onLoginClick: () -> Unit = {}
 ) {
 
     var correo by rememberSaveable { mutableStateOf("") }
@@ -160,7 +161,7 @@ fun LoginScreen(
         Spacer(modifier = Modifier.height(20.dp))
 
         Button(
-            onClick = { },
+            onClick = { onLoginClick() },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(52.dp),
